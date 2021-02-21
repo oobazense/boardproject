@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <!-- Custom styles for this template -->
+  <link href="carousel.css" rel="stylesheet">
+</head>
+<body>
+  
+<header>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'list' %}">SNS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item active">
+          <a class="nav-link" aria-current="page" href="{% url 'list' %}">ホーム</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">ログアウト</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">ログイン</a>
+          </li>
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+</header>
+
+      
+  </body>
+</html>
+
+<br>
+
+
+    <div class="alert alert-primary" role="alert">
+    <h3>詳細</h3>
+    </div>
+
+    
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <p>タイトル:{{ object.title }}</p>
+        <p>内容:{{ object.content }}</p>
+        <p>投稿者:{{ object.auther }}</p>
+        <p><img src="{{ object.snsimage.url }}" width=500></p>
+        <a href="{% url 'good' object.pk %}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">{{ object.good }}いいね</a>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href = "{% static 'style.css'%}" rel="stylesheet">
+{% endblock customcss%}
+
+{% block content %}
+
+<body  class="text-center" >
+
+  <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+<div class="container">
+  
+</div>
+    
+  </a>
+  <form class="form-signup" method = 'POST'>{% csrf_token %}
+<h1 class="h3 mb-3 font-weight-normal">サインアップする</h1>
+<label for="inputEmail" class="sr-only">ユーザーネーム</label>
+<input type="text id="inputEmail" class="form-control" placeholder="username" name=username required autofocus>
+<p>{{ error }}</p>
+<br>
+<label for="inputPassword" class="sr-only">パスワード</label>
+<input type="password" id="inputPassword" class="form-control" placeholder="パスワード" name=password required>
+<br>
+<button class="btn btn-lg btn-primary btn-block" type="submit">サイアップ</button>
+<br>
+<a href="{% url 'login' %}">ログイン</a>
+<p class="mt-5 mb-3 text-muted">&copy; 2021-</p>
+
+</form>
+
+</body>
+
+{% endblock content %}
+
+{% block hooter %}
+
+{% endblock hooter %}
