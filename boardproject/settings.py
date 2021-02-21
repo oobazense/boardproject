@@ -23,9 +23,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '^_t3hab1gt-n)mvjbio!ov$wbw1j&e)^qvt@imr8q+6y88@)**'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+try:
+    from config.local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
+
+
+
+
+ALLOWED_HOSTS = ["board-app1.herokuapp.com"]
 
 
 # Application definition
@@ -81,6 +93,10 @@ DATABASES = {
     }
 }
 
+# 追記
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
