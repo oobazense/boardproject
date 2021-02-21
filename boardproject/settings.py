@@ -23,21 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '^_t3hab1gt-n)mvjbio!ov$wbw1j&e)^qvt@imr8q+6y88@)**'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-try:
-    from config.local_settings import *
-except ImportError:
-    pass
-
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
+DEBUG = True
 
 
 
 
-ALLOWED_HOSTS = ["board-app1.herokuapp.com"]
+ALLOWED_HOSTS = ['localhost', '.pythonanywhere.com']
 
 
 # Application definition
@@ -49,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'boardapp'
+    'boardapp',
 ]
 
 MIDDLEWARE = [
@@ -136,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/sta/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'static'
 
 STATIC_DIRS = [str(BASE_DIR / 'static')]
 
